@@ -1,4 +1,30 @@
 <?php
+$paragraph = "oggi mi sono svegliata alle 8. ho fatto colazione. ho acceso il computer. ho studiato PHP. Alle 13 ho pranzato";
+$litteParagraphs = explode(".", $paragraph);
+var_dump($litteParagraphs);
+$color = "";
+$db = [
+    'teachers' => [
+        [
+            'name' => 'Michele',
+            'lastname' => 'Papagni'
+        ],
+        [
+            'name' => 'Fabio',
+            'lastname' => 'Forghieri'
+        ]
+    ],
+    'pm' => [
+        [
+            'name' => 'Roberto',
+            'lastname' => 'Marazzini'
+        ],
+        [
+            'name' => 'Federico',
+            'lastname' => 'Pellegrini'
+        ]
+    ]
+];
 $matches = [
     [
         "homeTeam" => "Roma",
@@ -95,6 +121,7 @@ for($i = 0; $i < 15; $i++) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -125,14 +152,19 @@ for($i = 0; $i < 15; $i++) {
             foreach ($postList as $post) {
                 echo "<li>" . ($post['text']) . ' ' . ($post['author']) . "</li>";
             }
-
-
         }
         ?>
     </ul>
 
-  
     <p> <?php foreach ($arrayNumber as $number) {echo $number;} ?></p>
+
+    <div><?php foreach ($litteParagraphs as $p) { echo '<p>' . $p . '</p>';} ?></div>
+
+  <div> <?php  foreach ($db as $profession => $personList) 
+  { if($profession == 'teachers') {foreach ($personList as $person ) {
+     echo '<p class = "green">' . $person['name'] . '</p>';}
+  } else { foreach ($personList as $person ) echo '<p class = "grey">' . $person['name'] . '</p>';}} ?></div>
+</body>
 </body>
 
 </html>
