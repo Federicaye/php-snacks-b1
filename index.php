@@ -79,6 +79,13 @@ if (strlen($name) > 3 && strpos($email, '@') && strpos($email, '.') && is_numeri
 } else {
     $message = 'accesso negato';
 }
+
+$arrayNumber = [];
+for($i = 0; $i < 15; $i++) {
+    $number = rand(5, 15);
+    if (!in_array($number , $arrayNumber)){
+        $arrayNumber[] = $number;
+    }};
 ?>
 
 <!DOCTYPE html>
@@ -124,6 +131,8 @@ if (strlen($name) > 3 && strpos($email, '@') && strpos($email, '.') && is_numeri
         ?>
     </ul>
 
+  
+    <p> <?php foreach ($arrayNumber as $number) {echo $number;} ?></p>
 </body>
 
 </html>
