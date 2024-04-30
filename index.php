@@ -24,8 +24,21 @@ $matches = [
         "scoreHome" => 3,
         "scoreGuest" => 0,
     ],
-]
+];
 
+
+if(isset($_GET['name'])){
+    $name = $_GET['name'];
+}
+if(isset($_GET['age'])){
+    $age = $_GET['age'];
+}
+if(isset($_GET['email'])){
+    $email = $_GET['email']; 
+}
+if(strlen($name)>3 && strpos($email, '@') && strpos($email, '.') && is_numeric($age)) {
+    $message = 'Accesso riuscito';
+} else { $message = 'accesso negato';}
     ?>
 
 <!DOCTYPE html>
@@ -43,9 +56,17 @@ $matches = [
              echo "<li>" . $matches[$match]['homeTeam'] . ' - ' . $matches[$match]['guestTeam'] . ' | ' . $matches[$match]['scoreHome'] . '-' . $matches[$match]['scoreGuest'] . "</li>" ;}
         
         ?>
-      
-       
         </ul>
+
+        <form action="index.php" method="GET">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="age" placeholder="age">
+            <input type="text" name="email" placeholder="email">
+            <button type="submit">send</button>
+        </form>
+
+        <div> <?php if($name && $age && $email) { echo  $message ;} else { echo 'compila il form';}?> </div>
+
 </body>
 
 </html>
